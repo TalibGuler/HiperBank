@@ -28,7 +28,7 @@ namespace DataAccess.Data
         }
 
         public DbSet<Bilanco> Bilanco { get; set; }
-        public DbSet<Core.Entities.Concrete.Enum> Enum { get; set; }
+        //public DbSet<Core.Entities.Concrete.Enum> Enum { get; set; }
         public DbSet<EnumTuru> EnumTuru { get; set; }
         public DbSet<GercekMusteri> GercekMusteri { get; set; }
         public DbSet<Musteri> Musteri { get; set; }

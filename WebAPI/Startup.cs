@@ -43,9 +43,7 @@ namespace WebAPI
             services.AddSingleton<IBilancoService, BilancoService>();
             services.AddSingleton<IBilancoRepository, BilancoRepository>();
 
-            services.AddSingleton<IEnumService, EnumService>();
-            services.AddSingleton<IEnumRepository, EnumRepository>();
-
+            
             services.AddSingleton<IEnumTuruService,EnumTuruService>();
             services.AddSingleton<IEnumTuruRepository,EnumTuruRepository >();
 

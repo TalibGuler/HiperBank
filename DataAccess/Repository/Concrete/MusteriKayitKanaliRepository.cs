@@ -1,5 +1,7 @@
-﻿using Core.DataAccess.EntityFramework;
+﻿using Core;
+using Core.DataAccess.EntityFramework;
 using Core.Entities.Concrete;
+using Core.Extensions;
 using DataAccess.Data;
 using DataAccess.Repository.Abstract;
 using Entities.Concrete;
@@ -20,17 +22,17 @@ namespace DataAccess.Repository.Concrete
                 var result = from m in dbContext.Musteri
                              join mkk in dbContext.MusteriKayitKanali
                              on m.Id equals mkk.MusteriId
-                             join e in dbContext.Enum
-                             on mkk.KayitTuruId equals e.Id
+                             //join e in dbContext.Enum
+                             //on mkk.KayitTuruId equals e.Id
                              join gm in dbContext.GercekMusteri
                              on m.Id equals gm.MusteriId
-                            
                              select new MusteriKayitKanaliResponseDto
                              {
                                  Id= m.Id,
                                  Ad = gm.Ad,
                                  Soyad= gm.Soyad,
-                                 KayıtTuruAdı=e.Aciklama
+                                 KayitTuruId=mkk.KayitTuruId,
+                                 KayıtTuruAdı=EnumExtensions.GetDisplayName((MusteriKayitTuru)mkk.KayitTuruId)
                              };
                 return result.ToList();
             }

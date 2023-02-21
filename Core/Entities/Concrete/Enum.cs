@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace Core.Entities.Concrete
 {
-    public class Enum : IEntity
+    public enum MusteriKayitTuru
     {
-        public int Id { get; set; }
-        public string Ad { get; set; }
-        public string Aciklama { get; set; }
-        public int EnumTuruId { get; set; }
+        [Display(Name = "Şube")]
+        Sube = 1,
+        [Display(Name = "Mobil")]
+        Mobil = 2,
+        [Display(Name = "İnternet")]
+        Internet = 3,
     }
 }
+#if false
+#endif

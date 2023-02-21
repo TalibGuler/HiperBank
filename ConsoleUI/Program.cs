@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Repository.Abstract;
+using DataAccess.Repository.Concrete;
+using System;
 
 namespace ConsoleUI
 {
@@ -6,7 +10,12 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            GercekMusteriService bilancoService = new GercekMusteriService(new GercekMusteriRepository());
+
+            foreach (var bilanco in bilancoService.GetAll().Data)
+            {
+                Console.WriteLine(bilanco.Ad + " " + bilanco.Soyad);
+            }
         }
     }
 }

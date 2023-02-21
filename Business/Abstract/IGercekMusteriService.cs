@@ -10,8 +10,8 @@ namespace Business.Abstract
 {
     public interface IGercekMusteriService
     {
-        IDataResult<List<GercekMusteri>> GetAll();
-        IDataResult<List<GercekMusteri>> GetById(int id);
+        IDataResult<IEnumerable<GercekMusteri>> GetAll();
+        IDataResult<IEnumerable<GercekMusteri>> GetById(int id);
         IResult Add(GercekMusteri gercekMusteri);
         IResult Delete(GercekMusteri gercekMusteri);
         IResult Update(GercekMusteri gercekMusteri);

@@ -32,14 +32,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delete);
         }
 
-        public IDataResult<List<Musteri>> GetAll()
+        public IDataResult<IEnumerable<Musteri>> GetAll()
         {
-            return new SuccessDataResult<List<Musteri>>(_musteriRepository.GetAll(), Messages.Listed);
+            return new SuccessDataResult<IEnumerable<Musteri>>(_musteriRepository.GetAll(), Messages.Listed);
         }
 
-        public IDataResult<List<Musteri>> GetById(int id)
+        public IDataResult<IEnumerable<Musteri>> GetById(int id)
         {
-            return new SuccessDataResult<List<Musteri>>(_musteriRepository.GetAll(p=> p.Id == id),Messages.Listed);
+            return new SuccessDataResult<IEnumerable<Musteri>>(_musteriRepository.GetAll(p=> p.Id == id),Messages.Listed);
         }
 
         public IResult Update(Musteri musteri)

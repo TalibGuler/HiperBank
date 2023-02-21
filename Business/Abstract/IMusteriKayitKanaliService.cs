@@ -11,11 +11,11 @@ namespace Business.Abstract
 {
     public interface IMusteriKayitKanaliService
     {
-        IDataResult<List<MusteriKayitKanali>> GetAll();
-        IDataResult<List<MusteriKayitKanali>> GetById(int id);
+        IDataResult<IEnumerable<MusteriKayitKanali>> GetAll();
+        IDataResult<IEnumerable<MusteriKayitKanali>> GetById(int id);
         IResult Add(MusteriKayitKanali musteriKayitKanali);
         IResult Delete(MusteriKayitKanali musteriKayitKanali);
         IResult Update(MusteriKayitKanali musteriKayitKanali);
-        IDataResult<List<MusteriKayitKanaliResponseDto>> GetMusteriKayitKanaliResponseDto();
+        IDataResult<IEnumerable<MusteriKayitKanaliResponseDto>> GetMusteriKayitKanaliResponseDto();
     }
 }

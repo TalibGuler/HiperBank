@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace WebAPI
@@ -40,24 +41,55 @@ namespace WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
 
-            services.AddSingleton<IBilancoService, BilancoService>();
-            services.AddSingleton<IBilancoRepository, BilancoRepository>();
+            //services.AddDbContext<ProjectDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:HiperConnection"]));
 
+
+            services.AddControllersWithViews();
+            services.AddSession();
+           // services.AddTransient<INewsRepository, NewsRepository>();
             
-            services.AddSingleton<IEnumTuruService,EnumTuruService>();
-            services.AddSingleton<IEnumTuruRepository,EnumTuruRepository >();
+            services.AddDbContext<ProjectDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("HiperConnection")));
 
-            services.AddSingleton <IGercekMusteriService, GercekMusteriService> ();
-            services.AddSingleton <IGercekMusteriRepository, GercekMusteriRepository > ();
+            services.AddMemoryCache();
 
-            services.AddSingleton <IMusteriService, MusteriService> ();
-            services.AddSingleton <IMusteriRepository, MusteriRepository> ();
+            //services.AddSingleton<IBilancoService, BilancoService>();
+            //services.AddSingleton<IBilancoRepository, BilancoRepository>();
 
-            services.AddSingleton<IMusteriKayitKanaliService, MusteriKayitKanaliService>();
-            services.AddSingleton<IMusteriKayitKanaliRepository, MusteriKayitKanaliRepository>();
 
-            services.AddSingleton<ITuzelMusteriService, TuzelMusteriService>();
-            services.AddSingleton<ITuzelMusteriRepository, TuzelMusteriRepository>();
+            //services.AddSingleton<IEnumTuruService, EnumTuruService>();
+            //services.AddSingleton<IEnumTuruRepository, EnumTuruRepository>();
+
+            //services.AddSingleton<IGercekMusteriService, GercekMusteriService>();
+            //services.AddSingleton<IGercekMusteriRepository, GercekMusteriRepository>();
+
+            //services.AddSingleton<IMusteriService, MusteriService>();
+            //services.AddSingleton<IMusteriRepository, MusteriRepository>();
+
+            //services.AddSingleton<IMusteriKayitKanaliService, MusteriKayitKanaliService>();
+            //services.AddSingleton<IMusteriKayitKanaliRepository, MusteriKayitKanaliRepository>();
+
+            //services.AddSingleton<ITuzelMusteriService, TuzelMusteriService>();
+            //services.AddSingleton<ITuzelMusteriRepository, TuzelMusteriRepository>();
+
+            services.AddTransient<IBilancoRepository, BilancoRepository>();
+            services.AddTransient<IBilancoService, BilancoService>();
+
+            services.AddTransient<IEnumTuruRepository, EnumTuruRepository>();
+            services.AddTransient<IEnumTuruService, EnumTuruService>();
+
+            services.AddTransient<IGercekMusteriRepository, GercekMusteriRepository>();
+            services.AddTransient<IGercekMusteriService, GercekMusteriService>();
+
+            services.AddTransient<IMusteriKayitKanaliRepository, MusteriKayitKanaliRepository>();
+            services.AddTransient<IMusteriKayitKanaliService, MusteriKayitKanaliService>();
+
+            services.AddTransient<IMusteriRepository, MusteriRepository>();
+            services.AddTransient<IMusteriService, MusteriService>();
+
+            services.AddTransient<ITuzelMusteriRepository, TuzelMusteriRepository>();
+            services.AddTransient<ITuzelMusteriService, TuzelMusteriService>();
+            
+           
 
             //services.AddDbContext<ProjectDbContext>(options =>
             //options.UseNpgsql(Configuration.GetConnectionString("Host=localhost;Database=HiperBankDB;Username=postgres;Password=g181210011")));
@@ -86,6 +118,11 @@ namespace WebAPI
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void ConfigureBusinessServices(IServiceCollection services)
+        {
+           
         }
     }
 }

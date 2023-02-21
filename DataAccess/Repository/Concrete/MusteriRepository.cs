@@ -10,7 +10,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository.Concrete
 {
-    public class MusteriRepository : EfEntityRepositoryBase<Musteri, ProjectDbContext>, IMusteriRepository
+    public class MusteriRepository : EfEntityRepositoryBase<Musteri>, IMusteriRepository
     {
+       
+        public MusteriRepository(ProjectDbContext context) : base(context)
+        {
+            
+        }
     }
 }

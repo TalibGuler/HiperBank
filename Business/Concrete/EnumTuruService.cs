@@ -32,14 +32,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delete);
         }
 
-        public IDataResult<List<EnumTuru>> GetById(int id)
+        public IDataResult<IEnumerable<EnumTuru>> GetById(int id)
         {
-            return new SuccessDataResult<List<EnumTuru>>(_enumTuruRepository.GetAll(p => p.Id == id),Messages.Listed);
+            return new SuccessDataResult<IEnumerable<EnumTuru>>(_enumTuruRepository.GetAll(p => p.Id == id),Messages.Listed);
         }
 
-        public IDataResult<List<EnumTuru>> GetAll()
+        public IDataResult<IEnumerable<EnumTuru>> GetAll()
         {
-            return new SuccessDataResult<List<EnumTuru>>(_enumTuruRepository.GetAll(),Messages.Listed);
+            return new SuccessDataResult<IEnumerable<EnumTuru>>(_enumTuruRepository.GetAll(),Messages.Listed);
         }
 
         public IResult Update(EnumTuru enumTuru)

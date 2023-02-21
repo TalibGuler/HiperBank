@@ -11,6 +11,6 @@ namespace DataAccess.Repository.Abstract
 {
     public interface ITuzelMusteriRepository : IEntityRepository<TuzelMusteri>
     {
-        List<MusteriBilancoResponseDto> GetMusteriBilancoResponseDto();
+        IEnumerable<MusteriBilancoResponseDto> GetMusteriBilancoResponseDto();
     }
 }

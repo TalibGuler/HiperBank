@@ -14,10 +14,11 @@ namespace Core.DataAccess
     // new() : new'lenebilir olmalı
     public interface IEntityRepository<T> where T : class, IEntity, new()
     {
-        List<T> GetAll(Expression<Func<T, bool>> filter = null);
-        T Get(Expression<Func<T, bool>> filter  );
-        void Add(T entity);
-        void Update(T entity);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> expression = null);
+      //  List<T> GetAll(Expression<Func<T, bool>> expression = null);
+        T Get(Expression<Func<T, bool>> expression);
+        T Add(T entity);
+        T Update(T entity);
         void Delete(T entity);
 
 

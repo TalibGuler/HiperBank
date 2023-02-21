@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository.Concrete
 {
-    public class EnumTuruRepository : EfEntityRepositoryBase<EnumTuru, ProjectDbContext>, IEnumTuruRepository
+    public class EnumTuruRepository : EfEntityRepositoryBase<EnumTuru>, IEnumTuruRepository
     {
-
+        
+        public EnumTuruRepository(ProjectDbContext context) : base(context)
+        {
+            
+        }
     }
 }

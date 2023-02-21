@@ -34,20 +34,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delete);
         }
 
-        public IDataResult<List<TuzelMusteri>> GetAll()
+        public IDataResult<IEnumerable<TuzelMusteri>> GetAll()
         {
            // return new SuccessDataResult<List<TuzelMusteri>>(_tuzelMusteriRepository.GetAll(), Messages.Listed);
-            return new SuccessDataResult<List<TuzelMusteri>>(_tuzelMusteriRepository.GetAll(), Messages.Listed);
+            return new SuccessDataResult<IEnumerable<TuzelMusteri>>(_tuzelMusteriRepository.GetAll(), Messages.Listed);
         }
 
-        public IDataResult<List<TuzelMusteri>> GetById(int id)
+        public IDataResult<IEnumerable<TuzelMusteri>> GetById(int id)
         {
-            return new SuccessDataResult<List<TuzelMusteri>>(_tuzelMusteriRepository.GetAll(b => b.Id == id), Messages.Listed);
+            return new SuccessDataResult<IEnumerable<TuzelMusteri>>(_tuzelMusteriRepository.GetAll(b => b.Id == id), Messages.Listed);
         }
 
-        public IDataResult<List<MusteriBilancoResponseDto>> GetMusteriBilancoResponseDto()
+        public IDataResult<IEnumerable<MusteriBilancoResponseDto>> GetMusteriBilancoResponseDto()
         {
-            return new SuccessDataResult<List<MusteriBilancoResponseDto>>(_tuzelMusteriRepository.GetMusteriBilancoResponseDto());
+            return new SuccessDataResult<IEnumerable<MusteriBilancoResponseDto>>(_tuzelMusteriRepository.GetMusteriBilancoResponseDto());
         }
 
         public IResult Update(TuzelMusteri tuzelMusteri)

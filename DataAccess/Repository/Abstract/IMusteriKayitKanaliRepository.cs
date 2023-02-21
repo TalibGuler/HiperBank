@@ -11,6 +11,6 @@ namespace DataAccess.Repository.Abstract
 {
     public interface IMusteriKayitKanaliRepository : IEntityRepository<MusteriKayitKanali>
     {
-        List<MusteriKayitKanaliResponseDto> GetMusteriKayitKanaliResponseDto();
+        IEnumerable<MusteriKayitKanaliResponseDto> GetMusteriKayitKanaliResponseDto();
     }
 }

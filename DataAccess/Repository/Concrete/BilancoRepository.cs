@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository.Concrete
 {
-    public class BilancoRepository : EfEntityRepositoryBase<Bilanco,ProjectDbContext>, IBilancoRepository
+    public class BilancoRepository : EfEntityRepositoryBase<Bilanco>, IBilancoRepository
     {
-        
+       
+        public BilancoRepository(ProjectDbContext context) : base(context)
+        {
+           
+        }
     }
 }

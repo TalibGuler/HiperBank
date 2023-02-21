@@ -10,7 +10,14 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository.Concrete
 {
-    public class GercekMusteriRepository : EfEntityRepositoryBase<GercekMusteri, ProjectDbContext>,IGercekMusteriRepository
+    public class GercekMusteriRepository : EfEntityRepositoryBase<GercekMusteri>,IGercekMusteriRepository
     {
+       
+        public GercekMusteriRepository(ProjectDbContext context) : base(context)
+        {
+
+        }
+        
+
     }
 }

@@ -34,20 +34,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delete);
         }
 
-        public IDataResult<List<MusteriKayitKanali>> GetAll()
+        public IDataResult<IEnumerable<MusteriKayitKanali>> GetAll()
         {
-            return new SuccessDataResult<List<MusteriKayitKanali>>(_musteriKayitKanaliRepository.GetAll());
+            return new SuccessDataResult<IEnumerable<MusteriKayitKanali>>(_musteriKayitKanaliRepository.GetAll());
         }
 
-        public IDataResult<List<MusteriKayitKanali>> GetById(int id)
+        public IDataResult<IEnumerable<MusteriKayitKanali>> GetById(int id)
         {
-            return new SuccessDataResult<List<MusteriKayitKanali>>(_musteriKayitKanaliRepository.GetAll(p => p.Id == id));
+            return new SuccessDataResult<IEnumerable<MusteriKayitKanali>>(_musteriKayitKanaliRepository.GetAll(p => p.Id == id));
         }
 
      
-        public IDataResult<List<MusteriKayitKanaliResponseDto>> GetMusteriKayitKanaliResponseDto()
+        public IDataResult<IEnumerable<MusteriKayitKanaliResponseDto>> GetMusteriKayitKanaliResponseDto()
         {
-            return new SuccessDataResult<List<MusteriKayitKanaliResponseDto>>(_musteriKayitKanaliRepository.GetMusteriKayitKanaliResponseDto());
+            return new SuccessDataResult<IEnumerable<MusteriKayitKanaliResponseDto>>(_musteriKayitKanaliRepository.GetMusteriKayitKanaliResponseDto());
 
         }
 

@@ -13,12 +13,17 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository.Concrete
 {
-    public class MusteriKayitKanaliRepository : EfEntityRepositoryBase<MusteriKayitKanali, ProjectDbContext>, IMusteriKayitKanaliRepository
+    public class MusteriKayitKanaliRepository : EfEntityRepositoryBase<MusteriKayitKanali>, IMusteriKayitKanaliRepository
     {
-        public List<MusteriKayitKanaliResponseDto> GetMusteriKayitKanaliResponseDto()
+       
+        public MusteriKayitKanaliRepository(ProjectDbContext context) : base(context)
         {
-            using (ProjectDbContext dbContext = new ProjectDbContext())
-            {
+           
+        }
+        public ProjectDbContext dbContext => context as ProjectDbContext;
+        public IEnumerable<MusteriKayitKanaliResponseDto> GetMusteriKayitKanaliResponseDto()
+        {
+            
                 var result = from m in dbContext.Musteri
                              join mkk in dbContext.MusteriKayitKanali
                              on m.Id equals mkk.MusteriId
@@ -35,7 +40,7 @@ namespace DataAccess.Repository.Concrete
                                  KayıtTuruAdı=EnumExtensions.GetDisplayName((MusteriKayitTuru)mkk.KayitTuruId)
                              };
                 return result.ToList();
-            }
+            
 
         }
     }

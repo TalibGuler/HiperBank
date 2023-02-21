@@ -31,14 +31,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delete);
         }
 
-        public IDataResult<List<GercekMusteri>> GetAll()
+        public IDataResult<IEnumerable<GercekMusteri>> GetAll()
         {
-            return new SuccessDataResult<List<GercekMusteri>>(_gercekMusteriRepository.GetAll(), Messages.Listed);
+            return new SuccessDataResult<IEnumerable<GercekMusteri>>(_gercekMusteriRepository.GetAll(), Messages.Listed);
         }
 
-        public IDataResult<List<GercekMusteri>> GetById(int id)
+        public IDataResult<IEnumerable<GercekMusteri>> GetById(int id)
         {
-            return new SuccessDataResult<List<GercekMusteri>>(_gercekMusteriRepository.GetAll(p=>p.Id == id), Messages.Listed);
+            return new SuccessDataResult<IEnumerable<GercekMusteri>>(_gercekMusteriRepository.GetAll(p=>p.Id == id), Messages.Listed);
         }
 
         public IResult Update(GercekMusteri gercekMusteri)

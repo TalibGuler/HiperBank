@@ -11,11 +11,11 @@ namespace Business.Abstract
 {
     public interface ITuzelMusteriService
     {
-        IDataResult<List<TuzelMusteri>> GetAll();
-        IDataResult<List<TuzelMusteri>> GetById(int id);
+        IDataResult<IEnumerable<TuzelMusteri>> GetAll();
+        IDataResult<IEnumerable<TuzelMusteri>> GetById(int id);
         IResult Add(TuzelMusteri tuzelMusteri);
         IResult Update(TuzelMusteri tuzelMusteri);
         IResult Delete(TuzelMusteri tuzelMusteri);
-        IDataResult<List<MusteriBilancoResponseDto>> GetMusteriBilancoResponseDto();
+        IDataResult<IEnumerable<MusteriBilancoResponseDto>> GetMusteriBilancoResponseDto();
     }
 }

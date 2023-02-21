@@ -1,21 +1,27 @@
-﻿using Business.Abstract;
-using Business.Concrete;
-using DataAccess.Repository.Abstract;
+﻿using Core.Entities.Concrete;
 using DataAccess.Repository.Concrete;
+using Microsoft.Ajax.Utilities;
 using System;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
-namespace ConsoleUI
+using HttpClient client = new();
+client.DefaultRequestHeaders.Accept.Clear();
+client.DefaultRequestHeaders.Accept.Add(
+    new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+
+await ProcessRepositoriesAsync(client);
+
+static async Task ProcessRepositoriesAsync(HttpClient client)
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            GercekMusteriService bilancoService = new GercekMusteriService(new GercekMusteriRepository());
+    var json = await client.GetStringAsync(
+       "https://localhost:44372/api/GercekMusteri/getbyid?id=1");
 
-            foreach (var bilanco in bilancoService.GetAll().Data)
-            {
-                Console.WriteLine(bilanco.Ad + " " + bilanco.Soyad);
-            }
-        }
-    }
+    Console.WriteLine(json);
+
+       
+
 }

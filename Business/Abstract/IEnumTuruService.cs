@@ -10,8 +10,8 @@ namespace Business.Abstract
 {
     public interface IEnumTuruService
     {
-        IDataResult<List<EnumTuru>> GetAll();
-        IDataResult<List<EnumTuru>> GetById(int id);
+        IDataResult<IEnumerable<EnumTuru>> GetAll();
+        IDataResult<IEnumerable<EnumTuru>> GetById(int id);
         IResult Add(EnumTuru enumTuru);
         IResult Delete(EnumTuru enumTuru);
         IResult Update(EnumTuru enumTuru);

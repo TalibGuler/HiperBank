@@ -22,13 +22,31 @@ namespace DataAccess.Data
         //    //modelBuilder.UseSerialColumns();
         //}
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=HiperBankDB;Trusted_Connection=true");
+        //}
+
+
+        protected IConfiguration Configuration { get; }
+
+        public ProjectDbContext(IConfiguration configuration)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=HiperBankDB;Trusted_Connection=true");
+            Configuration = configuration;
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                base.OnConfiguring(optionsBuilder.UseSqlServer(Configuration["ConnectionStrings:HiperConnection"]));
+
+            }
+        }
+
+
+
         public DbSet<Bilanco> Bilanco { get; set; }
-        //public DbSet<Core.Entities.Concrete.Enum> Enum { get; set; }
         public DbSet<EnumTuru> EnumTuru { get; set; }
         public DbSet<GercekMusteri> GercekMusteri { get; set; }
         public DbSet<Musteri> Musteri { get; set; }

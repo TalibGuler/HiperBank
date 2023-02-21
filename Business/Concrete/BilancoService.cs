@@ -32,14 +32,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Delete);
         }
 
-        public IDataResult<List<Bilanco>> GetAll()
+        public IDataResult<IEnumerable<Bilanco>> GetAll()
         {
-            return new SuccessDataResult<List<Bilanco>>(_bilancoRepository.GetAll(), Messages.Listed);
+            return new SuccessDataResult<IEnumerable<Bilanco>>(_bilancoRepository.GetAll(), Messages.Listed);
         }
 
-        public IDataResult<List<Bilanco>> GetById(int id)
+        public IDataResult<IEnumerable<Bilanco>> GetById(int id)
         {
-            return new SuccessDataResult<List<Bilanco>>(_bilancoRepository.GetAll(b => b.Id == id), Messages.Listed);
+            return new SuccessDataResult<IEnumerable<Bilanco>>(_bilancoRepository.GetAll(b => b.Id == id), Messages.Listed);
         }
 
         public IResult Update(Bilanco bilanco)

@@ -6,57 +6,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Core.DataAccess.EntityFramework
 {
-    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
-       where TEntity : class, IEntity, new()
-       where TContext : DbContext, new()
+    public class EfEntityRepositoryBase<TEntity> : IEntityRepository<TEntity> where TEntity : class, IEntity, new()
     {
-        public void Add(TEntity entity)
+        protected readonly DbContext context;
+
+        public EfEntityRepositoryBase(DbContext context)
         {
-            using (TContext context = new TContext())
-            {
-                var addedEntity = context.Entry(entity);
-                addedEntity.State = EntityState.Added;
-                context.SaveChanges();
-            }
+            this.context = context;
         }
+
+        public TEntity Add(TEntity entity)
+        {
+            EntityEntry<TEntity> entityEntry = context.Entry(entity);
+            entityEntry.State = EntityState.Added;
+            context.SaveChanges();
+            return entity;
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            EntityEntry<TEntity> entityEntry = context.Entry(entity);
+            entityEntry.State = EntityState.Modified;
+            context.SaveChanges();
+            return entity;
+        }
+
         public void Delete(TEntity entity)
         {
-            using (TContext context = new TContext())
-            {
-                var deletedEntity = context.Entry(entity);
-                deletedEntity.State = EntityState.Deleted;
-                context.SaveChanges();
-            }
+            EntityEntry<TEntity> entityEntry = context.Entry(entity);         
+            entityEntry.State = EntityState.Deleted;
+            context.SaveChanges();
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        public TEntity Get(Expression<Func<TEntity, bool>> expression)
         {
-            using (TContext context = new TContext())
-            {
-                return context.Set<TEntity>().SingleOrDefault(filter);
-            }
+            return context.Set<TEntity>().SingleOrDefault(expression);
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+       
+
+        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression = null)
         {
-            using (TContext context = new TContext())
+            IQueryable<TEntity> result;
+            if (expression != null)
             {
-                return filter == null ? context.Set<TEntity>().ToList()
-                    : context.Set<TEntity>().Where(filter).ToList();
+                result = context.Set<TEntity>().Where(expression);
             }
+            else
+            {
+                IQueryable<TEntity> queryable = context.Set<TEntity>();
+                result = queryable;
+            }
+
+            return result;
         }
 
-        public void Update(TEntity entity)
-        {
-            using (TContext context = new TContext())
-            {
-                var updatedEntity = context.Entry(entity);
-                updatedEntity.State = EntityState.Modified;
-                context.SaveChanges();
-            }
-        }
     }
 }

@@ -10,8 +10,8 @@ namespace Business.Abstract
 {
     public interface IBilancoService
     {
-        IDataResult<List<Bilanco>> GetAll();
-        IDataResult<List<Bilanco>> GetById(int id);
+        IDataResult<IEnumerable<Bilanco>> GetAll();
+        IDataResult<IEnumerable<Bilanco>> GetById(int id);
         IResult Add(Bilanco bilanco);
         IResult Update(Bilanco bilanco);
         IResult Delete(Bilanco bilanco);

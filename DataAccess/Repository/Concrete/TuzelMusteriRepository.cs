@@ -11,12 +11,17 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository.Concrete
 {
-    public class TuzelMusteriRepository : EfEntityRepositoryBase<TuzelMusteri, ProjectDbContext>, ITuzelMusteriRepository
+    public class TuzelMusteriRepository : EfEntityRepositoryBase<TuzelMusteri>, ITuzelMusteriRepository
     {
-        public List<MusteriBilancoResponseDto> GetMusteriBilancoResponseDto()
+      
+        public TuzelMusteriRepository(ProjectDbContext context) : base(context)
         {
-            using (ProjectDbContext dbContext = new ProjectDbContext())
-            {
+           
+        }
+        public ProjectDbContext dbContext => context as ProjectDbContext;
+        public IEnumerable<MusteriBilancoResponseDto> GetMusteriBilancoResponseDto()
+        {
+            
                 var result = from tm in dbContext.TuzelMusteri
                              join mu in dbContext.Musteri
                              on tm.MusteriId equals mu.Id
@@ -30,7 +35,7 @@ namespace DataAccess.Repository.Concrete
                                  BilancoTarihi = b.BilancoTarihi
                              };
                 return result.ToList();
-            }
+            
         }
     }
 }

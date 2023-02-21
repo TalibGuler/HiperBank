@@ -10,8 +10,8 @@ namespace Business.Abstract
 {
     public interface IMusteriService
     {
-        IDataResult<List<Musteri>> GetAll();
-        IDataResult<List<Musteri>> GetById(int id);
+        IDataResult<IEnumerable<Musteri>> GetAll();
+        IDataResult<IEnumerable<Musteri>> GetById(int id);
         IResult Add(Musteri musteri);
         IResult Delete(Musteri musteri);
         IResult Update(Musteri musteri);

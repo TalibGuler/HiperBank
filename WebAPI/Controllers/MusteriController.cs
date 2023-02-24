@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost("delete")]
         public IActionResult Delete(Musteri musteri)
         {
             var result = _musteriService.Delete(musteri);

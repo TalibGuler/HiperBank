@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Core.Entities.Concrete;
+using DataAccess.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace WebAPI.Controllers
     public class GercekMusteriController : ControllerBase
     {
         IGercekMusteriService _gercekMusteriService;
+        
         public GercekMusteriController(IGercekMusteriService gercekMusteriService)
         {
             _gercekMusteriService = gercekMusteriService;
@@ -49,7 +51,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost("delete")]
         public IActionResult Delete(GercekMusteri gercekMusteri)
         {
             var result = _gercekMusteriService.Delete(gercekMusteri);
@@ -59,6 +61,20 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+
+
+        [HttpDelete("deletebyid/{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            var result = _gercekMusteriService.DeleteById(id);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result);
+        }
+
 
         [HttpPut("update")]
         public IActionResult Update(GercekMusteri gercekMusteri)

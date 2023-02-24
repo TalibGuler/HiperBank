@@ -10,5 +10,6 @@ namespace Core.Entities.Concrete
     {
         public int Id { get; set; }
         public string MusteriNo { get; set; }
+        public bool SilindiMi { get; set; }
     }
 }

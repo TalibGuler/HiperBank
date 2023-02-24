@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost("delete")]
         public IActionResult Delete(MusteriKayitKanali musteriKayitKanali)
         {
             var result = _musteriKayitKanaliService.Delete(musteriKayitKanali);

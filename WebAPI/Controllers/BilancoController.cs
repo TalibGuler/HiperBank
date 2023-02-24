@@ -50,7 +50,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost("delete")]
         public IActionResult Delete(Bilanco bilanco)
         {
             var result = _bilancoService.Delete(bilanco);

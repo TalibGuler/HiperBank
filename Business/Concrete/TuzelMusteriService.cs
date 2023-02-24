@@ -28,6 +28,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Add);
         }
 
+        
         public IResult Delete(TuzelMusteri tuzelMusteri)
         {
             _tuzelMusteriRepository.Delete(tuzelMusteri);

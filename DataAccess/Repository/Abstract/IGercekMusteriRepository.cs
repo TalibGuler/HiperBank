@@ -10,5 +10,6 @@ namespace DataAccess.Repository.Abstract
 {
     public interface IGercekMusteriRepository : IEntityRepository<GercekMusteri>
     {
+        //bool DeleteByEntity(GercekMusteri gercekMusteri);
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace DataAccess.Data
 { 
@@ -44,6 +45,18 @@ namespace DataAccess.Data
             }
         }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Bilanco>().HasQueryFilter(c => !c.SilindiMi);
+            modelBuilder.Entity<EnumTuru>().HasQueryFilter(c => !c.SilindiMi);
+            modelBuilder.Entity<GercekMusteri>().HasQueryFilter(c => !c.SilindiMi);
+            modelBuilder.Entity<Musteri>().HasQueryFilter(c => !c.SilindiMi);
+            modelBuilder.Entity<MusteriKayitKanali>().HasQueryFilter(c => !c.SilindiMi);
+            modelBuilder.Entity<TuzelMusteri>().HasQueryFilter(c => !c.SilindiMi);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
 
 
         public DbSet<Bilanco> Bilanco { get; set; }

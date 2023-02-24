@@ -15,5 +15,6 @@ namespace Core.Entities.Concrete
         public int VergiNo { get; set; }
         public string VergiDairesi { get; set; }
         public string Yetkili { get; set; }
+        public bool SilindiMi { get; set; }
     }
 }

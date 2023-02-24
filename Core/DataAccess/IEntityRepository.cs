@@ -20,6 +20,9 @@ namespace Core.DataAccess
         T Add(T entity);
         T Update(T entity);
         void Delete(T entity);
+        //TResult InTransaction<TResult>(Func<TResult> action, Action successAction = null, Action<Exception> exceptionAction = null);
+
+        //Task<T> GetAsyncAsNoTracking(Expression<Func<T, bool>> expression);
 
 
     }

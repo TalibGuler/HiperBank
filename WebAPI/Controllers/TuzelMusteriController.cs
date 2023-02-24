@@ -68,7 +68,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost("delete")]
         public IActionResult Delete(TuzelMusteri tuzelMusteri)
         {
             var result = _tuzelMusteriService.Delete(tuzelMusteri);

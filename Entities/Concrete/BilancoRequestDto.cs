@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities.Concrete
+namespace Entities.Concrete
 {
-    public class Bilanco : IEntity
+    public class BilancoRequestDto
     {
         public int Id { get; set; }
         public int MusteriId { get; set; }

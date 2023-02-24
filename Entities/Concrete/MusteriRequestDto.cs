@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities.Concrete
+namespace Entities.Concrete
 {
-    public class Bilanco : IEntity
+    public class MusteriRequestDto
     {
         public int Id { get; set; }
-        public int MusteriId { get; set; }
-        public int BilancoTutari { get; set; }
-        public DateTime BilancoTarihi { get; set; }
+        public string MusteriNo { get; set; }
         public bool SilindiMi { get; set; }
     }
 }

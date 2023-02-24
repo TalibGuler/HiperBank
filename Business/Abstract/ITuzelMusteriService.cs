@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Entities.Concrete;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Business.Abstract
         IResult Add(TuzelMusteri tuzelMusteri);
         IResult Update(TuzelMusteri tuzelMusteri);
         IResult Delete(TuzelMusteri tuzelMusteri);
+       // IDataResult<TuzelMusteri> Create(TuzelMusteriRequestDto model);
         IDataResult<IEnumerable<MusteriBilancoResponseDto>> GetMusteriBilancoResponseDto();
     }
 }

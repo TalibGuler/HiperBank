@@ -54,7 +54,7 @@ namespace WebUI.Controllers
 
         public ActionResult Edit(int id)
         {
-            //GercekMusteriModels student = null;
+            GercekMusteriModels student = null;
 
             using (var client = new HttpClient())
             {
@@ -64,28 +64,49 @@ namespace WebUI.Controllers
                 var responseTask = client.GetAsync("GercekMusteri?id=" + id.ToString());
                 responseTask.Wait();
 
-                var putTask = client.PutAsJsonAsync<GercekMusteri>("student", student);
-                putTask.Wait();
+                //var putTask = client.PutAsJsonAsync<GercekMusteri>("student", student);
+                //putTask.Wait();
 
-                var result = putTask.Result;
+                //var result = putTask.Result;
+                //if (result.IsSuccessStatusCode)
+                //{
+
+                //    return RedirectToAction("Index");
+                //}
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<GercekMusteriModels>();
+                    readTask.Wait();
+
+                    student = readTask.Result;
+                }
+
+            }
+
+            return View(student);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44372/api/");
+
+                //HTTP DELETE
+                var deleteTask = client.DeleteAsync("GercekMusteri/deletebyid/" + id.ToString());
+                deleteTask.Wait();
+
+                var result = deleteTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
 
                     return RedirectToAction("Index");
                 }
-
-                //var result = responseTask.Result;
-                //if (result.IsSuccessStatusCode)
-                //{
-                //    var readTask = result.Content.ReadAsAsync<GercekMusteriModels>();
-                //    readTask.Wait();
-
-                //    student = readTask.Result;
-                //}
-
             }
 
-            return View(student);
+            return RedirectToAction("Index");
         }
 
 

@@ -14,6 +14,8 @@ namespace Business.Abstract
         IDataResult<IEnumerable<GercekMusteri>> GetById(int id);
         IResult Add(GercekMusteri gercekMusteri);
         IResult Delete(GercekMusteri gercekMusteri);
+        //DataResult<GercekMusteri> DeleteById(int ogrenciId);
+        IResult DeleteById(int ogrenciId);
         IResult Update(GercekMusteri gercekMusteri);
 
     }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Core.DataAccess.EntityFramework
 {
@@ -65,5 +66,50 @@ namespace Core.DataAccess.EntityFramework
             return result;
         }
 
+        //public Task<TEntity> GetAsyncAsNoTracking(Expression<Func<TEntity, bool>> expression)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public TResult InTransaction<TResult>(Func<TResult> action, Action successAction = null, Action<Exception> exceptionAction = null)
+        //{
+        //    TResult result = default(TResult);
+        //    try
+        //    {
+        //        if (context.Database.ProviderName.EndsWith("InMemory"))
+        //        {
+        //            result = action();
+        //            context.SaveChanges();
+        //        }
+        //        else
+        //        {
+        //            using IDbContextTransaction dbContextTransaction = context.Database.BeginTransaction();
+        //            try
+        //            {
+        //                result = action();
+        //                context.SaveChanges();
+        //                dbContextTransaction.Commit();
+        //            }
+        //            catch (Exception)
+        //            {
+        //                dbContextTransaction.Rollback();
+        //                throw;
+        //            }
+        //        }
+
+        //        successAction?.Invoke();
+        //    }
+        //    catch (Exception obj)
+        //    {
+        //        if (exceptionAction == null)
+        //        {
+        //            throw;
+        //        }
+
+        //        exceptionAction(obj);
+        //    }
+
+        //    return result;
+        //}
     }
 }

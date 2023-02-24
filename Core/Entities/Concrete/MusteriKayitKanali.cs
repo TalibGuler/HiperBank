@@ -11,5 +11,6 @@ namespace Core.Entities.Concrete
         public int Id { get; set; }
         public int MusteriId { get; set; }
         public int KayitTuruId { get; set; }
+        public bool SilindiMi { get; set; }
     }
 }

@@ -50,7 +50,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPost("delete")]
         public IActionResult Delete(EnumTuru enumTuru)
         {
             var result = _enumTuruService.Delete(enumTuru);

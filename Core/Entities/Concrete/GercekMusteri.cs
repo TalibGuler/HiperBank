@@ -17,5 +17,6 @@ namespace Core.Entities.Concrete
         public string Telefon { get; set; }
         public string KayitliOlduguIl { get; set; }
         public string DogumYeri { get; set; }
+        public bool SilindiMi { get; set; }
     }
 }
